@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Function</title>
+    <style>
+       body {
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    height: 100vh;
+}
+
+.dice-img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 20px auto;
+}
+
+.animate {
+    animation: roll 1s infinite;
+}
+
+.app-title {
+    text-align: center;
+}
+
+.btn-roll {
+    width: 200px;
+    display: block;
+    margin: 20px auto;
+    font-size: 30px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(135deg, #FEB692 10%, #EA5455 100%);
+    color: white;
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1 class="app-title">Roll the Dice</h1>
+    <img src="defaultdice.png" alt="dice" class="dice-img" id="dice-img" />
+
+    <button class="btn-roll" onclick="roll()">Roll Dice</button>
+    <script>
+        function roll(){
+            const min = 1;
+            const max = 6;
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            const img = document.getElementById('dice-img');
+
+            switch (randomNumber) {
+                case 1:
+                    img.src = 'dice1.png';
+                    break;
+                case 2:
+                    img.src = 'dice2.png';
+                    break;
+                case 3:
+                    img.src = 'dice3.png';
+                    break;
+                case 4:
+                    img.src = 'dice4.png';
+                    break;
+                case 5:
+                    img.src = 'dice5.png';
+                    break;
+                case 6:
+                    img.src = 'dice6.png';
+                    break;
+                default:
+                    img.src = 'defaultdice.png';
+                    break;
+            }
+            img.classList.add("animate");
+
+    setTimeout(() => {
+        img.classList.remove("animate");
+    }, 1000);
+        }
+    </script>
+</body>
+</html>
